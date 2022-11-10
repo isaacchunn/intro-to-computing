@@ -1,0 +1,53 @@
+//
+//  matTriSum.c
+//  Codes here are indicative and not exhaustive. There will definitely be better codes out there.
+//
+//  Created by Isaac Chun on 25/10/22.
+//
+
+#include <stdio.h>
+#include <string.h>
+#define M 10
+int matTriSum(int x[M][M], int n);
+
+int main()
+{
+     int x[M][M];
+     int n,i,j,s;
+
+     printf("Enter array (nxn) size (n<=10): \n");
+     scanf("%d",&n);
+     for (i=0;i<n;i++) {
+     printf("Enter row %d: \n",i);
+     for (j=0;j<n;j++)
+     scanf("%d",&x[i][j]);
+     }
+     s=matTriSum(x,n);
+     printf("The sum is: %d\n",s);
+    return 0;
+}
+
+/******************************************************************************/
+/*!
+\brief
+Computes the sum of the upper triangular matrix and returns it.
+\param x 2d matrix
+\param n size of square matrix
+\exception None
+\return None
+*/
+/******************************************************************************/
+int matTriSum(int x[M][M], int n)
+{
+    int i,j, sum;
+    sum = 0;
+    //Loop through all columns
+    for (j = 0; j < n; ++j)
+    {
+        for (i = j; i < n; ++i)
+        {
+            sum += x[j][i];
+        }
+    }
+    return sum;
+}
